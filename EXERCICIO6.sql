@@ -1,3 +1,4 @@
+-- BDIII AULA6
 use bd3;
 -- create table 
 create table categorias(

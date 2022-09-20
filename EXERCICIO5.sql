@@ -1,5 +1,4 @@
--- BDIIIA05 - exercícios
-
+-- BDIII AULA5
 CREATE DATABASE bd3;
 
 USE bd3;

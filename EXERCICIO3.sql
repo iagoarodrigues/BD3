@@ -1,4 +1,4 @@
--- BDIII A03
+-- BDIII AULA4
 CREATE DATABASE bd2exercicios;
 
 USE bd2exercicios;

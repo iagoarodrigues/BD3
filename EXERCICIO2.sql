@@ -1,4 +1,4 @@
--- BDIIIA05 - exercícios
+-- BDIII A02
 
 CREATE DATABASE bd3;
 

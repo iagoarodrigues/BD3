@@ -1,66 +1,93 @@
--- BDIII AULA4
-CREATE DATABASE bd2exercicios;
+-- BDIIIA03
 
-USE bd2exercicios;
+DROP DATABASE bd3;
+CREATE DATABASE bd3;
 
-CREATE TABLE usuarios  (
-	id INT PRIMARY KEY auto_increment,
-	nome varchar(100) null, 
-	email varchar(100) null, 
-	senha varchar(100) null,
-	perfil varchar(50) null
+USE bd3;
+
+-- exibe todas as tabelas do banco de dados selecionado
+SHOW TABLES;
+
+-- DROP TABLE IF EXISTS alunos;
+
+-- create table
+CREATE TABLE alunos (
+	id INT AUTO_INCREMENT primary key,
+	nome varchar (50),
+	idade int (3),
+    nascimento date DEFAULT NULL
 );
 
-INSERT INTO usuarios (
-	nome,
-	email,
-	senha,
-	perfil
-)
-VALUES (
-	'André Neves',
-	'andr@andr.com.br',
-	'123456789',
-	'desenvolvedor'
-),
-(
-	'Luciene',
-	'lu@lu.com.br',
-	'987654321',
-	'administrador'
-),
-(
-	'Ana',
-	'ana@ana.com.br',
-	'989898989',
-	'gerente'
-);
+-- insert
+insert into alunos (nome, idade, nascimento) values ('leo', 10, '2011-03-04');
+insert into alunos (nome, idade, nascimento) values ('juju', 11, '2010-10-08');
+insert into alunos (nome, idade, nascimento) values ('fred', 13, '2008-05-12');
+insert into alunos (nome, idade, nascimento) values ('joao', null, null);
+insert into alunos (nome, idade, nascimento) values ('joao', 14, '2007-07-05');
 
-create table carro (
-  id int(11) primary key auto_increment,
-  nome varchar(200) not null,
-  valor int(11),
-  endereco varchar(255)
-);
+-- COUNT
+-- Desejo contar todas as ocorrências da coluna idade na tabela alunos
+-- somente conta o preenchido
 
-RENAME TABLE carro TO carros;
+SELECT COUNT(idade)
+FROM alunos;
+-- WHERE condicao;
 
-ALTER TABLE carros change COLUMN valor valor FLOAT; 
+-- AVG
+-- Média dos valores não null
+SELECT AVG(idade)
+FROM alunos;
+-- WHERE condicao;
 
-ALTER TABLE carros DROP COLUMN endereco;
+-- SUM
+-- Soma dos valores não null
+SELECT SUM(idade)
+FROM alunos;
+-- WHERE condicao; 
 
-ALTER TABLE carros ADD COLUMN observacao TEXT(100);
+-- MIN
+-- Menor valor
+SELECT MIN(idade)
+FROM alunos;
+
+-- MAX
+-- -- Maior valor
+SELECT MAX(idade)
+FROM alunos;
+
+-- LIKE
+SELECT *
+FROM alunos
+WHERE nome LIKE '%joao%'; 
 
 
--- Obs.: Tente colocar a senha criptografada no banco de dados. Consulte a documentação para entender mais sobre criptografia e coloque SHA2 (256)
-/*
-ALTER TABLE usuarios ADD COLUMN senha_criptografada  VARCHAR(100);
+-- para teste 
 
-UPDATE
-	usuarios 
-SET
-	senha_criptografada = SHA2(SENHA, 256)
-    
-WHERE
-	ID IN (1,2,3);
-*/
+insert into alunos (nome, idade, nascimento) 
+values ('André Neves dos Reis', 10, '2011-03-04');
+
+insert into alunos (nome, idade, nascimento) 
+values ('Castro Alves', 10, '2011-03-04');
+
+insert into alunos (nome, idade, nascimento) 
+values ('Euclides da Cunha Neves', 10, '2011-03-04');
+
+insert into alunos (nome, idade, nascimento) 
+values ('Chico Buarque Reis', 10, '2011-03-04');
+
+insert into alunos (nome, idade, nascimento) 
+values ('Felipe Neto Neves', 10, '2011-03-04');
+
+
+select * from alunos
+where nome like '%Neves%';
+
+select * from alunos
+where nome like '%Reis%';
+
+select * from alunos
+where nome like '%a%';
+
+-- coringas
+-- % - representa qualquer numero ou multiplos caracteres
+-- _ - um único caracter
